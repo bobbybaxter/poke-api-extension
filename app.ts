@@ -3,9 +3,18 @@ import express, { NextFunction, Request, Response } from 'express';
 import createError, { HttpError } from 'http-errors';
 import logger from 'morgan';
 import path from 'path';
+import { AppDataSource } from './src/mysql/data-source';
 import indexRouter from './src/routes/index';
 
 const app = express();
+
+AppDataSource.initialize()
+  .then(() => {
+    console.log('Data Source has been initialized!');
+  })
+  .catch((err) => {
+    console.error('Error during Data Source initialization', err);
+  });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -1,5 +1,5 @@
-import { Pokemon } from '../../../models/pokemon.types';
-import HttpClientController from '../../http-client/HttpClientController';
+import HttpClient from '../../../services/HttpClient';
+import { Pokemon } from '../../../types/pokemon.types';
 
 export async function getPokemonByIdOrName({
   baseUrl,
@@ -7,7 +7,7 @@ export async function getPokemonByIdOrName({
   idOrName,
 }: {
   baseUrl: string;
-  httpClient: HttpClientController;
+  httpClient: HttpClient;
   idOrName: string;
 }) {
   const response = await httpClient.get<Pokemon>(`${baseUrl}/pokemon/${idOrName}`);

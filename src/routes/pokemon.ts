@@ -1,9 +1,9 @@
 import express, { NextFunction, Request, Response } from 'express';
-import HttpClientController from '../controllers/http-client/HttpClientController';
 import PokemonController from '../controllers/pokemon/PokemonController';
+import HttpClient from '../services/HttpClient';
 
 const router = express.Router();
-const pokemonController = new PokemonController(new HttpClientController());
+const pokemonController = new PokemonController(new HttpClient());
 
 router.get('/', async function (req: Request, res: Response, next: NextFunction) {
   const pokemon = await pokemonController.listAllPokemon();
