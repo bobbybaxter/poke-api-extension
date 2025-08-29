@@ -3,9 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "build": "tsc",
+    "start": "node ./dist/bin/www.js",
+    "dev": "ts-node-dev --respawn --transpile-only ./bin/www.ts"
   },
   "dependencies": {
+    "axios": "^1.11.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
@@ -14,6 +17,7 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
+    "@types/axios": "^0.9.36",
     "@types/cookie-parser": "^1.4.9",
     "@types/debug": "^4.1.12",
     "@types/express": "^5.0.3",

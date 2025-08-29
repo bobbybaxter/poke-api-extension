@@ -3,8 +3,7 @@ import express, { NextFunction, Request, Response } from 'express';
 import createError, { HttpError } from 'http-errors';
 import logger from 'morgan';
 import path from 'path';
-import indexRouter from './routes/index';
-import usersRouter from './routes/users';
+import indexRouter from './src/routes/index';
 
 const app = express();
 
@@ -19,7 +18,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -37,4 +35,4 @@ app.use(function (err: Error, req: Request, res: Response, next: NextFunction) {
   res.render('error');
 });
 
-module.exports = app;
+export default app;
