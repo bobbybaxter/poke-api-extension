@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default class HttpClientController {
+export default class HttpClient {
   constructor() {}
 
   async get<T>(url: string) {

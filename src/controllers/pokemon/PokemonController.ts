@@ -1,10 +1,10 @@
-import HttpClientController from '../http-client/HttpClientController';
+import HttpClient from '../../services/HttpClient';
 import * as methods from './methods/index';
 
 export default class PokemonController {
   private baseUrl: string;
 
-  constructor(private httpClient: HttpClientController) {
+  constructor(private httpClient: HttpClient) {
     this.baseUrl = 'https://pokeapi.co/api/v2/';
   }
 
