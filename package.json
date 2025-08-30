@@ -8,6 +8,8 @@
     "dev": "ts-node-dev --respawn --transpile-only ./bin/www.ts"
   },
   "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
     "axios": "^1.11.0",
     "bcrypt": "^6.0.0",
     "cookie-parser": "~1.4.4",
