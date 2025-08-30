@@ -1,4 +1,4 @@
-import { buildUrlWithSearchParams } from '../../../helpers/buildUrlWithSearchParams';
+import { buildUrlWithSearchParams } from '../../../helpers/build-url-with-search-params';
 import HttpClient from '../../../services/HttpClient';
 
 type AllPokemonData = {
