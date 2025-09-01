@@ -8,7 +8,11 @@
     "dev": "ts-node-dev --respawn --transpile-only ./bin/www.ts",
     "test": "vitest run --coverage",
     "test:watch": "vitest --watch",
-    "coverage": "open \"file://$PWD/coverage/lcov-report/index.html\""
+    "coverage": "open \"file://$PWD/coverage/lcov-report/index.html\"",
+    "prepare": "husky",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.mjs,.cjs --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "ajv": "^8.17.1",
@@ -50,6 +54,7 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-simple-import-sort": "^12.1.1",
+    "husky": "^9.1.7",
     "nock": "^14.0.10",
     "supertest": "^7.1.4",
     "ts-node": "^10.9.2",
