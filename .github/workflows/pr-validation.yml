@@ -1,0 +1,68 @@
+name: PR Validation (ESLint + Prettier)
+
+on:
+  pull_request:
+    branches: ['main']
+    paths:
+      - '**/*.js'
+      - '**/*.jsx'
+      - '**/*.ts'
+      - '**/*.tsx'
+      - '**/*.mjs'
+      - '**/*.cjs'
+      - '**/*.json'
+      - '**/*.yml'
+      - '**/*.yaml'
+      - '**/*.css'
+      - '**/*.md'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-${{ github.event.pull_request.number }}-lint
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Lint & Format Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect package manager
+        id: pm
+        run: |
+          if [ -f pnpm-lock.yaml ]; then
+            echo "pm=pnpm" >> $GITHUB_OUTPUT
+          elif [ -f yarn.lock ]; then
+            echo "pm=yarn" >> $GITHUB_OUTPUT
+          else
+            echo "pm=npm" >> $GITHUB_OUTPUT
+          fi
+          echo "Detected package manager: $(cat $GITHUB_OUTPUT)"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          # Cache key matches the detected PM
+          cache: ${{ steps.pm.outputs.pm }}
+
+      # npm
+      - name: Install (npm)
+        if: ${{ steps.pm.outputs.pm == 'npm' }}
+        run: npm ci
+
+      # ESLint
+      - name: ESLint
+        if: ${{ steps.pm.outputs.pm == 'npm' }}
+        run: npx eslint . --ext .js,.jsx,.ts,.tsx,.mjs,.cjs --max-warnings=0
+
+      # Prettier
+      - name: Prettier (check)
+        if: ${{ steps.pm.outputs.pm == 'npm' }}
+        run: npx prettier --check .

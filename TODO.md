@@ -17,5 +17,5 @@
 - [ ] Add OpenAPI (Swagger) docs
 - [x] Password checks done with Bcrypt using Hashed values
 - [x] ESLint + Prettier
-- [ ] Husky for pre-commit hooks
-- [ ] GitHub actions for validating code when raising a pull request (ESLint + Prettier)
+- [x] Husky for pre-commit hooks
+- [x] GitHub actions for validating code when raising a pull request (ESLint + Prettier)
