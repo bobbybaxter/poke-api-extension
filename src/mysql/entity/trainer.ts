@@ -7,10 +7,10 @@ export class Trainer {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column('varchar')
   name!: string;
 
-  @Column()
+  @Column('varchar')
   class!: string;
 
   @Column({ type: 'json', nullable: true })

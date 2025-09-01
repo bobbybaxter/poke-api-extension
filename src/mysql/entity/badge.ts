@@ -5,6 +5,6 @@ export class Badge {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column('varchar')
   name!: string;
 }

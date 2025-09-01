@@ -7,7 +7,7 @@
 - [x] Interact with a local database (in memory or instance) which holds your custom models, which can be linked with PokeAPI data
 - [x] The Trainer interactions should be done via Authenticated routes
 - [x] Include input validation and error handling
-- [ ] Include basic unit tests for key services or logic
+- [x] Include basic unit tests for key services or logic
 - [ ] Include a README.md with instructions on how to run and test the application
 
 ## Optional

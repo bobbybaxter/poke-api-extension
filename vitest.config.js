@@ -1,0 +1,53 @@
+import { defineConfig } from 'vitest/config';
+import tsConfigPaths from 'vite-tsconfig-paths';
+
+export default defineConfig({
+  plugins: [tsConfigPaths()],
+  test: {
+    clearMocks: true,
+    coverage: {
+      exclude: [
+        '**/.git/**',
+        '**/bin/**',
+        '**/build/**',
+        '**/cache/**',
+        '**/coverage/**',
+        '**/dist/**',
+        '**/logs/**',
+        '**/public/**',
+        '**/mysql/**',
+        '**/node_modules/**',
+        '**/temp/**',
+        '**/tests/**',
+        '**/tmp/**',
+        '**/types/**',
+        '**/app.**',
+        '**/*.config.**',
+        '**/*.schema.**',
+        '**/*.schemas.**',
+        '**/*.spec.**',
+      ],
+      extension: ['js', 'jsx', 'ts', 'tsx'],
+      provider: 'v8',
+      reporter: ['lcov'],
+      reportOnFailure: true,
+      reportsDirectory: 'coverage',
+    },
+    environment: 'node',
+    exclude: [
+      '**/build/**',
+      '**/coverage/**',
+      '**/dist/**',
+      '**/logs/**',
+      '**/node_modules/**',
+      '**/public/**',
+      '**/temp/**',
+      '**/tmp/**',
+    ],
+    globals: true,
+    cache: false,
+    reporters: ['verbose'],
+    root: '.',
+    setupFiles: 'src/tests/setup/vitest.setup.ts',
+  },
+});

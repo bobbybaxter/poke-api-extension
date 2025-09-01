@@ -45,7 +45,7 @@ router.get(
       if (!trainer) {
         const appError = new Error('Trainer not found') as AppError;
         appError.statusCode = 404;
-        next(appError);
+        return next(appError);
       }
       res.json(trainer);
     } catch (error) {
@@ -66,7 +66,7 @@ router.patch(
       if (!trainer) {
         const appError = new Error('Trainer not found') as AppError;
         appError.statusCode = 404;
-        next(appError);
+        return next(appError);
       }
 
       const updatedTrainer = await trainerController.updateTrainer(parseInt(id), {
