@@ -1,7 +1,7 @@
 import { buildUrlWithSearchParams } from '../../../helpers/build-url-with-search-params';
 import HttpClient from '../../../services/HttpClient';
 
-type AllPokemonData = {
+export type AllPokemonData = {
   name: string;
   url: string;
 };
@@ -15,6 +15,7 @@ type AllPokemonResponse = {
 
 export async function listAllPokemon({ baseUrl, httpClient }: { baseUrl: string; httpClient: HttpClient }) {
   const allPokemon: AllPokemonData[] = [];
+
   let url: string | null = buildUrlWithSearchParams(`${baseUrl}/pokemon`, {
     limit: 1000,
   });

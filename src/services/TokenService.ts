@@ -1,9 +1,12 @@
 import crypto from 'crypto';
+import dotenv from 'dotenv';
 import jwt, { Secret, SignOptions } from 'jsonwebtoken';
 import { Repository } from 'typeorm';
 import { AppDataSource } from '../mysql/data-source';
 import { RefreshToken } from '../mysql/entity/refresh-tokens';
 import { User } from '../mysql/entity/user';
+
+dotenv.config({ quiet: true });
 
 interface JwtPayload {
   sub: string;

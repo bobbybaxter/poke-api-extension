@@ -15,10 +15,10 @@ export class RefreshToken {
   @Column({ name: 'token_hash', type: 'char', length: 64 })
   tokenHash!: string;
 
-  @Column({ name: 'expires_at' })
+  @Column({ name: 'expires_at', type: 'datetime' })
   expiresAt!: Date;
 
-  @Column({ default: false })
+  @Column({ type: 'boolean', default: false })
   revoked!: boolean;
 
   @CreateDateColumn({ name: 'created_at' })

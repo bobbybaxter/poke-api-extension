@@ -6,13 +6,13 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
-  @Column({ length: 50, unique: true })
+  @Column({ type: 'varchar', length: 50, unique: true })
   username!: string;
 
-  @Column({ unique: true })
+  @Column({ type: 'varchar', unique: true })
   email!: string;
 
-  @Column()
+  @Column('varchar')
   passwordHash!: string;
 
   @CreateDateColumn({ name: 'created_at' })
